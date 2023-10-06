@@ -1,0 +1,24 @@
+def calculate_tip(total_bill, tip_percentage, num_people):
+    tip = total_bill * (tip_percentage / 100)
+    total_payment = total_bill + tip
+    per_person_payment = total_payment / num_people
+    return per_person_payment
+
+while True:
+    try:
+        total_bill = float(input("Enter the total bill amount: $"))
+        tip_percentage = int(input("Enter the tip percentage (10, 12, or 15): "))
+        num_people = int(input("Enter the number of people splitting the bill: "))
+        
+        if tip_percentage not in [10, 12, 15] or num_people < 1:
+            print("Invalid input. Please enter valid values.")
+            continue
+        
+        per_person_payment = calculate_tip(total_bill, tip_percentage, num_people)
+        print("Each person should pay: ${:.2f}".format(per_person_payment))
+    except ValueError:
+        print("Invalid input. Please enter valid numbers.")
+    
+    another_calculation = input("Do you want to calculate another tip? (yes/no): ").lower()
+    if another_calculation != "yes":
+        break
