@@ -1,0 +1,24 @@
+def is_leap_year(year):
+    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+        return True
+    else:
+        return False
+
+while True:
+    try:
+        year = int(input("Enter a year: "))
+        
+        if year < 0:
+            print("Invalid input. Please enter a positive year.")
+            continue
+        
+        if is_leap_year(year):
+            print("{} is a leap year.".format(year))
+        else:
+            print("{} is not a leap year.".format(year))
+    except ValueError:
+        print("Invalid input. Please enter a valid year.")
+    
+    another_calculation = input("Do you want to check another year? (yes/no): ").lower()
+    if another_calculation != "yes":
+        break
